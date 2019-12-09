@@ -22,7 +22,7 @@
             <option value="blue">Blue</option>
             <option value="green">Green</option>
             <option value="purple">Purple</option>
-            <option value="lightblue">Light Blue</option>
+            <option value="light-blue">Light Blue</option>
             <option value="yellow">yellow</option>
             <option value="orange">Orange</option>
         </select>

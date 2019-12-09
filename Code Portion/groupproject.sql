@@ -67,9 +67,6 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
--------------------------------------------------------
---Brandons SQL
---Create the DB
 
 CREATE TABLE users
 (
@@ -77,4 +74,5 @@ id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 username VARCHAR(50) NOT NULL UNIQUE,
 password VARCHAR(128) NOT NULL
 )
+
 
