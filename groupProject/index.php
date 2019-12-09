@@ -1,4 +1,8 @@
 <?php
+	if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+	    header("location: login.php");
+	    exit;
+	}
 
 	//Get the database connection
 	require("models/connection.php");
