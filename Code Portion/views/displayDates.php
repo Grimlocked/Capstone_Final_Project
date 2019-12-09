@@ -1,5 +1,3 @@
-
-
 <form action="index" method="post">
 	<button class="btn waves-effect waves-light logsubmit blue" type="submit" name="action" value="createRequestForm">Create Reservation</button>
 	
@@ -22,3 +20,4 @@
 	</tr>
 	<?php endforeach; ?>
 </table>
+

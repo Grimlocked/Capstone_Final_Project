@@ -79,7 +79,6 @@
 			$color = "red";
 		}
 
-
 		//Determine if the end time is after the start time
 		if(date("His",strtotime($startTime)) < date("His",strtotime($endTime)))
 		{
@@ -227,11 +226,10 @@
 		}
 
 		$allData = $db->query("SELECT * FROM reservation");
+
 		//Display the reservations
 		include("views/displayDates.php");
 	}
-
-
 
 	include("views/footer.php");
 ?>

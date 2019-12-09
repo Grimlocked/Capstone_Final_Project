@@ -1,0 +1,12 @@
+User Inserted for testing:
+INSERT INTO `users` (`id`, `username`, `password`) VALUES ('1', 'xximagamerxx69', 'imagamer')
+
+In regards to the User we need to 
+
+1, Have at least one login; ensure that it's documented
+2, Hashing
+
+--to test the app
+ALTER TABLE users MODIFY `password` VARCHAR(42);
+UPDATE users
+SET     `password` = PASSWORD(`password`);
