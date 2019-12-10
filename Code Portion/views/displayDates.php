@@ -1,6 +1,6 @@
 <form action="index" method="post">
-	<button class="btn waves-effect waves-light logsubmit blue" type="submit" name="action" value="createRequestForm">Create Reservation</button>
-	
+	<button class="btn waves-effect waves-light logsubmit blue <?php if($_SESSION["loggedin"] != true) {echo 'hide';}?> " type="submit" name="action" value="createRequestForm">Create Reservation</button>
+	<button class="btn waves-effect waves-light logsubmit blue <?php if($_SESSION["loggedin"] == true) {echo 'hide';}?>" type="submit" name="action" value="login">LogIn</button>
 </form>
 <table>
 	<?php foreach($allData as $arow): ?>
@@ -20,4 +20,3 @@
 	</tr>
 	<?php endforeach; ?>
 </table>
-

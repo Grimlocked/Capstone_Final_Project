@@ -53,6 +53,28 @@ INSERT INTO `reservation` (`id`, `starttime`, `endtime`, `groupname`, `reservedD
 (7, '15:41:00', '18:41:00', 'pubq', '2019-12-25', 'lightblue'),
 (8, '06:53:00', '06:56:00', 'Dota3', '2019-12-25', 'red');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(42) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'xximagamerxx69', 'imagamer420');
+
 DELIMITER $$
 --
 -- Events
@@ -66,13 +88,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-CREATE TABLE users
-(
-id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-username VARCHAR(50) NOT NULL UNIQUE,
-password VARCHAR(128) NOT NULL
-)
-
-
