@@ -33,3 +33,7 @@
 		<button class="btn waves-effect waves-light logsubmit blue" type="submit" name="action" value="editRequest">Submit</button>
 	</div>
 </form>
+<<<<<<< Updated upstream:Code Portion/views/updateTime.php
+=======
+
+>>>>>>> Stashed changes:Game_App/views/updateTime.php

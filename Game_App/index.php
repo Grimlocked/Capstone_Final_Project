@@ -1,4 +1,8 @@
 <?php
+<<<<<<< Updated upstream:Code Portion/index.php
+=======
+	session_start();
+>>>>>>> Stashed changes:Game_App/index.php
 
 	//Get the database connection
 	require("models/connection.php");
@@ -79,6 +83,10 @@
 			$color = "red";
 		}
 
+<<<<<<< Updated upstream:Code Portion/index.php
+=======
+
+>>>>>>> Stashed changes:Game_App/index.php
 		//Determine if the end time is after the start time
 		if(date("His",strtotime($startTime)) < date("His",strtotime($endTime)))
 		{
@@ -93,11 +101,16 @@
 			}
 			else
 			{
+<<<<<<< Updated upstream:Code Portion/index.php
 				echo "Error: An even already exists at this time";
+=======
+				echo "<p class='red-text'>Error: An event already exists at this time.</p>";
+>>>>>>> Stashed changes:Game_App/index.php
 			}
 		}
 		else
 		{
+<<<<<<< Updated upstream:Code Portion/index.php
 			echo "Error: The end time is before the start time";
 		}
 
@@ -106,6 +119,12 @@
 
 		//Display the reservations
 		include("views/displayDates.php");
+=======
+			echo "<p class='red-text'>Error: The end time is before the start time.</p>";
+		}
+
+		header("Location: index.php");
+>>>>>>> Stashed changes:Game_App/index.php
 	}
 	else if($action == "editRequestForm")
 	{
@@ -206,9 +225,13 @@
 			echo "Error: Reservation not found";
 		}
 
+<<<<<<< Updated upstream:Code Portion/index.php
 		$allData = $db->query("SELECT * FROM reservation");
 		//Display the reservations
 		include("views/displayDates.php");
+=======
+		header("Location: index.php");
+>>>>>>> Stashed changes:Game_App/index.php
 		
 	}
 	else if($action == "deleteRequest")
@@ -226,6 +249,7 @@
 		}
 
 		$allData = $db->query("SELECT * FROM reservation");
+<<<<<<< Updated upstream:Code Portion/index.php
 
 		//Display the reservations
 		include("views/displayDates.php");
@@ -237,4 +261,121 @@
 
 
 
+=======
+		//Display the reservations
+		include("views/displayDates.php");
+	}
+	else if($action == "login")
+	{
+		echo "loginnin";
+		$username =  "";
+		$password = "";
+		$username_err = "";
+		$password_err = "";
+
+		include("views/formLogin.php");
+	}
+	else if($action == "logout"){
+		unset($_SESSION['loggedin']);
+		header("Location: index.php");
+	}
+	else if($action == "checkLogin")
+	{
+		// Processing form data when form is submitted
+		if($_SERVER["REQUEST_METHOD"] == "POST")
+		{
+		 
+		    // Check if username is empty
+		    if(empty(trim($_POST["username"]))){
+		        $username_err = "Please enter username.";
+		    } 
+		    else
+		    {
+		        $username = trim($_POST["username"]);
+		    }
+		    
+		    // Check if password is empty
+		    if(empty(trim($_POST["password"]))){
+		        $password_err = "Please enter your password.";
+		    } 
+		    else
+		    {
+		        $password = trim($_POST["password"]);
+		    }
+		    
+		    // Validate credentials
+		    if(empty($username_err) && empty($password_err))
+		    {
+		        // Prepare a select statement
+		        $sql = "SELECT id, username, password FROM users WHERE username = :username";
+		        if($stmt = $db->prepare($sql))
+		        {
+		            // Set parameters
+		            $param_username = trim($_POST["username"]);
+		            // Bind variables to the prepared statement as parameters
+		            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+		            
+		            // Attempt to execute the prepared statement
+		            if($stmt->execute())
+		            {
+		                // Check if username exists, if yes then verify password
+		                if($stmt->rowCount() == 1)
+		                {
+		                    if($row = $stmt->fetch())
+		                    {
+		                        $id = $row["id"];
+		                        $username = $row["username"];
+		                        $password = $row["password"];
+		                        if(password_verify($_POST["password"], $row["password"]))
+		                        {
+		                            // Password is correct, so start a new session
+		                            
+		                            // Store data in session variables
+		                            $_SESSION["loggedin"] = true;
+		                                                      
+		                            
+		                            // Redirect user to welcome page
+		                            header("location: index.php");
+		                        } else
+		                        {
+		                            // Display an error message if password is not valid
+		                            $password_err = "The password you entered was not valid.";
+		                        }
+		                    }
+		                } 
+		                else
+		                {
+		                    // Display an error message if username doesn't exist
+		                    $username_err = "No account found with that username.";
+		                }
+		            } 
+		            else
+		            {
+		                echo "Oops! Something went wrong. Please try again later.";
+		            }
+		        }
+		        
+		        // Close statement
+		        unset($stmt);
+		    }
+		}
+
+
+		if(!isset($_SESSION["loggedin"]))
+		{
+			include("views/formLogin.php");
+		}
+		else
+		{
+			header("Location: index.php");
+
+		}
+	}
+
+
+
+	include("views/footer.php");
+?>
+
+>>>>>>> Stashed changes:Game_App/index.php
 

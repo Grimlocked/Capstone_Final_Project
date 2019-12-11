@@ -21,6 +21,43 @@ This is a setup file for IIS. This displays the steps to take in order to make i
 	-Create a phpinfo.php file in 'C:\inetpub\wwwroot'
 	-Create a php.ini if it doesn't already exist
 	-Edit the file to parameters in 'Server Production ini' document
+	-Ensure that, 
+		"[PHP_WINCACHE]
+		extension=php_wincache.dll"
+		...is at the end of the php.ini
 	-Delete 'C:\inetpub\wwwroot\phpinfo.php' as it's a security hazard
+
+
+
+
+5, Setup phpmyadmin
+	-Download phpmyadmin.zip and extract to website dirctory
+		Ex: inetpub/wwwroot/phpmyadmin
+	-Add a config folder to the phpmyadmin folder and give IIS_USERS permissions on it
+	-Go to http://[IP]:[PORT]/phpmyadmin/setup/ and add a server
+		Ex: 1	MySQL	cookie	mysqli://127.0.0.1:3306
+	-Save the config.ini.php file to the phpmyadmin folder
+
+6, Create the database
+	-in phpmyadmin, run the commands specified in the groupproject.sql folder
+
+7, Create User
+
+
 5, Test application
-	-At this point, IIS will create a 'wen.config' file
+	-At this point, IIS will create a 'web.config' file for the app
+
+
+php short open tag on
+disable directory browsing
+add filtering
+disable Parent Paths
+remove CGI options from INI
+delete login user IIS
+indexes
+	Warning: include(C:\inetpub\wwwroot\Game_App\views\header.php): failed to open stream: No such file or directory in C:\inetpub\wwwroot\Game_App\index.php on line 18
+	Warning: include(): Failed opening 'views/header.php' for inclusion (include_path='.;C:\php\pear') in C:\inetpub\wwwroot\Game_App\index.php on line 18
+	Warning: include(C:\inetpub\wwwroot\Game_App\views\displayDates.php): failed to open stream: No such file or directory in C:\inetpub\wwwroot\Game_App\index.php on line 28
+	Warning: include(): Failed opening 'views/displayDates.php' for inclusion (include_path='.;C:\php\pear') in C:\inetpub\wwwroot\Game_App\index.php on line 28
+	Warning: include(C:\inetpub\wwwroot\Game_App\views\footer.php): failed to open stream: No such file or directory in C:\inetpub\wwwroot\Game_App\index.php on line 337
+	Warning: include(): Failed opening 'views/footer.php' for inclusion (include_path='.;C:\php\pear') in C:\inetpub\wwwroot\Game_App\index.php on line 337
