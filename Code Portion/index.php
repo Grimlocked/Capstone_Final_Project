@@ -1,5 +1,11 @@
 <?php
+
 	session_start();
+	if (!isset($_SESSION['csrf_token'])) {
+    	$_SESSION['csrf_token'] = base64_encode(openssl_random_pseudo_bytes(32));
+	}
+	
+
 	//Get the database connection
 	require("models/connection.php");
 
@@ -12,14 +18,12 @@
 	{
 		$action = "home";
 	}
-
-
 	include("views/header.php");
-
 
 	//Determine actions based on Action
 	if($action == "home")
 	{
+
 		//Get all the reservations 
 		$allData = $db->query("SELECT * FROM reservation");
 
@@ -94,12 +98,14 @@
 			}
 			else
 			{
-				echo "Error: An even already exists at this time";
+
+				echo "<p class='red-text'>Error: An event already exists at this time.</p>";
 			}
 		}
 		else
 		{
 			echo "Error: The end time is before the start time";
+			echo "<p class='red-text'>Error: The end time is before the start time.</p>";
 		}
 
 		//Get all the reservations
@@ -107,6 +113,8 @@
 
 		//Display the reservations
 		include("views/displayDates.php");
+		
+
 	}
 	else if($action == "editRequestForm")
 	{
@@ -210,6 +218,7 @@
 		$allData = $db->query("SELECT * FROM reservation");
 		//Display the reservations
 		include("views/displayDates.php");
+		header("Location: index.php");
 		
 	}
 	else if($action == "deleteRequest")
@@ -227,30 +236,37 @@
 		}
 
 		$allData = $db->query("SELECT * FROM reservation");
+
+
 		//Display the reservations
 		include("views/displayDates.php");
 	}
 	else if($action == "login")
 	{
-		
-		$username = $password = "";
-		$username_err = $password_err = "";
+		$username =  "";
+		$password = "";
+		$username_err = "";
+		$password_err = "";
 
 		include("views/formLogin.php");
 	}
-	else if($action == "checkLogin")
+	else if($action == "logout"){
+		unset($_SESSION['loggedin']);
+		header("Location: index.php");
+	}
+	else if($action == "Login")
 	{
 		// Processing form data when form is submitted
 		if($_SERVER["REQUEST_METHOD"] == "POST")
 		{
 		 
 		    // Check if username is empty
-		    if(empty(trim($_POST["username"]))){
+		    if(empty(trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING)))){
 		        $username_err = "Please enter username.";
 		    } 
 		    else
 		    {
-		        $username = trim($_POST["username"]);
+		        $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
 		    }
 		    
 		    // Check if password is empty
@@ -270,7 +286,7 @@
 		        if($stmt = $db->prepare($sql))
 		        {
 		            // Set parameters
-		            $param_username = trim($_POST["username"]);
+		            $param_username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
 		            // Bind variables to the prepared statement as parameters
 		            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
 		            
@@ -285,14 +301,13 @@
 		                        $id = $row["id"];
 		                        $username = $row["username"];
 		                        $password = $row["password"];
-		                        if($_POST["password"] == $row["password"])
+		                        if(password_verify($_POST["password"], $row["password"]))
 		                        {
 		                            // Password is correct, so start a new session
 		                            
 		                            // Store data in session variables
 		                            $_SESSION["loggedin"] = true;
-		                            $_SESSION["id"] = $id;
-		                            $_SESSION["username"] = $username;                            
+		                                                      
 		                            
 		                            // Redirect user to welcome page
 		                            header("location: index.php");
@@ -321,15 +336,14 @@
 		}
 
 
-		if($_SESSION["loggedin"] != true)
+		if(!isset($_SESSION["loggedin"]))
 		{
 			include("views/formLogin.php");
 		}
 		else
 		{
-			$allData = $db->query("SELECT * FROM reservation");
-			//Display the reservations
-			include("views/displayDates.php");
+			header("Location: index.php");
+
 		}
 	}
 
@@ -337,8 +351,4 @@
 
 	include("views/footer.php");
 ?>
-
-
-
-
 

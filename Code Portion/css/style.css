@@ -38,3 +38,97 @@
 .input-field label {
      color: #000;
    }
+
+
+.active, .activeDetails{
+    display: block;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.inactive, .inactiveDetails, .inactiveCard{
+    display: none;
+}
+
+.activeCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: lightgrey;
+  display: inline-block;
+  position: relative;
+  left: 30px;
+  top: 10px;
+  min-width: 200%;
+}
+
+.client_activeCard{
+  min-width: 500%;
+}
+
+.container {
+}
+
+.rightAlign{
+  float: right;
+}
+
+.calendarNavBox {
+  position: relative;
+}
+
+.centerAlign{
+   margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+.roomColorIndicator{
+  padding: 5px;
+  display: inline-block;
+}
+
+.active button{
+  width: 100%;
+  background-color: inherit;
+  border: 0px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.active button:hover{
+  background-color: inherit;
+  opacity: .5;
+}
+
+.roomContainer{
+  padding: 5px;
+}
+
+.confirmationBtn{
+  background-color: black;
+  color: white;
+}
+
+.leftAlign{
+  margin-left: 25%;
+}
+
+.dayLeftAlign{
+  margin-left: 10%;
+}
+
+.today{
+  background-color: rgba(79,176,164, 0.3);
+}
+
+
+.eventItem{
+ width: 12.5%;
+padding-top: 0px;
+  padding-bottom: 0px;
+}
+

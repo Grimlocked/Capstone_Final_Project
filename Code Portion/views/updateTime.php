@@ -1,4 +1,4 @@
-<h3>Update Time Block</h3>
+<h3 class="center">Update Time Block</h3>
 <form action="index.php" method="post">
 	<div class="input-field col s12">
     	<input name="groupName" id="groupName" type="text" value="<?php echo $allData[0]['groupname'] ?>" required>
@@ -33,4 +33,3 @@
 		<button class="btn waves-effect waves-light logsubmit blue" type="submit" name="action" value="editRequest">Submit</button>
 	</div>
 </form>
-

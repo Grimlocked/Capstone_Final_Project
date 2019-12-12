@@ -1,7 +1,7 @@
 <?php
 $dsn = 'mysql:host=localhost;dbname=groupproject';
-	$username = 'root';
-	$password = '';
+	$username = 'DonadMe';
+	$password = 'dDEoFcBK3yLYvbNY';
 
 	try
 	{
@@ -9,6 +9,8 @@ $dsn = 'mysql:host=localhost;dbname=groupproject';
 	}
 	catch(PDOException $error)
 	{
-		
+		echo $error;
 	}
+
+
 ?>
