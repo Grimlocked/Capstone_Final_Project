@@ -1,8 +1,7 @@
 <?php
-<<<<<<< Updated upstream:Code Portion/index.php
-=======
+
 	session_start();
->>>>>>> Stashed changes:Game_App/index.php
+
 
 	//Get the database connection
 	require("models/connection.php");
@@ -83,10 +82,7 @@
 			$color = "red";
 		}
 
-<<<<<<< Updated upstream:Code Portion/index.php
-=======
 
->>>>>>> Stashed changes:Game_App/index.php
 		//Determine if the end time is after the start time
 		if(date("His",strtotime($startTime)) < date("His",strtotime($endTime)))
 		{
@@ -101,17 +97,15 @@
 			}
 			else
 			{
-<<<<<<< Updated upstream:Code Portion/index.php
+
 				echo "Error: An even already exists at this time";
-=======
 				echo "<p class='red-text'>Error: An event already exists at this time.</p>";
->>>>>>> Stashed changes:Game_App/index.php
 			}
 		}
 		else
 		{
-<<<<<<< Updated upstream:Code Portion/index.php
 			echo "Error: The end time is before the start time";
+			echo "<p class='red-text'>Error: The end time is before the start time.</p>";
 		}
 
 		//Get all the reservations
@@ -119,12 +113,8 @@
 
 		//Display the reservations
 		include("views/displayDates.php");
-=======
-			echo "<p class='red-text'>Error: The end time is before the start time.</p>";
-		}
+		
 
-		header("Location: index.php");
->>>>>>> Stashed changes:Game_App/index.php
 	}
 	else if($action == "editRequestForm")
 	{
@@ -225,13 +215,10 @@
 			echo "Error: Reservation not found";
 		}
 
-<<<<<<< Updated upstream:Code Portion/index.php
 		$allData = $db->query("SELECT * FROM reservation");
 		//Display the reservations
 		include("views/displayDates.php");
-=======
 		header("Location: index.php");
->>>>>>> Stashed changes:Game_App/index.php
 		
 	}
 	else if($action == "deleteRequest")
@@ -249,19 +236,8 @@
 		}
 
 		$allData = $db->query("SELECT * FROM reservation");
-<<<<<<< Updated upstream:Code Portion/index.php
-
-		//Display the reservations
-		include("views/displayDates.php");
-	}
-
-	include("views/footer.php");
-?>
 
 
-
-
-=======
 		//Display the reservations
 		include("views/displayDates.php");
 	}
@@ -376,6 +352,4 @@
 
 	include("views/footer.php");
 ?>
-
->>>>>>> Stashed changes:Game_App/index.php
 

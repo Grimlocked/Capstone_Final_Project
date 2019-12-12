@@ -9,12 +9,9 @@ $dsn = 'mysql:host=localhost;dbname=groupproject';
 	}
 	catch(PDOException $error)
 	{
-		
+
 	}
-<<<<<<< Updated upstream:Code Portion/models/connection.php
 
 	$link = mysqli_connect("127.0.0.1", "root", "", "groupproject");
 
-=======
->>>>>>> Stashed changes:Game_App/models/connection.php
 ?>
